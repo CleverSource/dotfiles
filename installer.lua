@@ -69,3 +69,10 @@ if sudo_user and sudo_user ~= "root" then
     print("==> Fixing file ownership...")
     run(string.format("sudo chown -R %s:%s %s", sudo_user, sudo_user, user_home))
 end
+
+print("==> Setting themes")
+
+run("gsettings set org.gnome.desktop.interface gtk-theme \"Adwaita-dark\"")
+run("gsettings set org.gnome.desktop.interface color-scheme \"prefer-dark\"")
+run("gsettings set org.gnome.desktop.interface icon-theme \"Yaru-blue\"")
+run("gtk-update-icon-cache /usr/share/icons/Yaru")

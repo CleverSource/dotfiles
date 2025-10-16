@@ -1,6 +1,7 @@
 # Hyprland
 hyprland
 uwsm
+xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 hyprpolkitagent
 mako
@@ -18,6 +19,10 @@ qt6-wayland
 # Fonts
 noto-fonts
 
+# Utilities
+fastfetch
+
 # Applications
 alacritty
 nautilus
+chromium
