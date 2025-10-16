@@ -92,4 +92,5 @@ run("gsettings set org.gnome.desktop.interface icon-theme \"Adwaita\"")
 run("gtk-update-icon-cache /usr/share/icons/Adwaita")
 
 print("==> Activating bluetooth")
+
 run("sudo systemctl enable --now bluetooth.service")
