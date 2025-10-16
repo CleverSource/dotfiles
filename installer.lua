@@ -45,6 +45,24 @@ for line in pkg_file:lines() do
 end
 pkg_file:close()
 
+print("==> Installing AUR packages")
+local pkg_yay_file = io.open("packages-yay", "r")
+
+if not pkg_yay_file then
+    error("Error: Could not open 'packages-yay' file.")
+end
+
+for line in pkg_yay_file:lines() do
+    line = line:match("^%s*(.-)%s*$")
+    if line ~= "" and not line:match("^#") then
+        print("→ Installing: " .. line)
+        if not run("yay -S --needed --noconfirm " .. line) then
+            print("⚠️  Failed to install: " .. line)
+        end
+    end
+end
+pkg_yay_file:close()
+
 print("==> Updating bash profile")
 
 local bash_profile_path = user_home .. "/.bash_profile"
