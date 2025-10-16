@@ -1,0 +1,22 @@
+# Hyprland
+hyprland
+uwsm
+xdg-desktop-portal-hyprland
+hyprpolkitagent
+mako
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+
+# Qt Wayland Support
+qt5-wayland
+qt6-wayland
+
+# Fonts
+noto-fonts
+
+# Applications
+alacritty
