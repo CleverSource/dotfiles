@@ -5,6 +5,10 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 hyprpolkitagent
 mako
+waybar
+
+# Bluetooth
+blueberry
 
 # Audio
 pipewire
