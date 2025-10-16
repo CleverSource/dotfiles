@@ -74,5 +74,5 @@ print("==> Setting themes")
 
 run("gsettings set org.gnome.desktop.interface gtk-theme \"Adwaita-dark\"")
 run("gsettings set org.gnome.desktop.interface color-scheme \"prefer-dark\"")
-run("gsettings set org.gnome.desktop.interface icon-theme \"Yaru-blue\"")
-run("gtk-update-icon-cache /usr/share/icons/Yaru")
+run("gsettings set org.gnome.desktop.interface icon-theme \"Adwaita\"")
+run("gtk-update-icon-cache /usr/share/icons/Adwaita")
