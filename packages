@@ -21,7 +21,12 @@ qt5-wayland
 qt6-wayland
 
 # Fonts
+fontconfig
 noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+woff2-font-awesome
 
 # Utilities
 fastfetch
