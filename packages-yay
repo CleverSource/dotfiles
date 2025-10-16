@@ -1,3 +1,4 @@
+# Walker
 walker-bin
 elephant
 elephant-bluetooth
@@ -12,3 +13,6 @@ elephant-symbols
 elephant-todo
 elephant-unicode
 elephant-websearch
+
+# Applications
+visual-studio-code-bin

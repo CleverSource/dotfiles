@@ -112,3 +112,8 @@ run("gtk-update-icon-cache /usr/share/icons/Adwaita")
 print("==> Activating bluetooth")
 
 run("sudo systemctl enable --now bluetooth.service")
+
+print("==> Setting defaults")
+run("xdg-settings set default-web-browser chromium.desktop")
+run("xdg-mime default chromium.desktop x-scheme-handler/http")
+run("xdg-mime default chromium.desktop x-scheme-handler/https")
