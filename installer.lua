@@ -1,17 +1,23 @@
-local home = os.getenv("HOME")
+local user_home = os.getenv("HOME")
+local sudo_user = os.getenv("SUDO_USER")
+if sudo_user and sudo_user ~= "root" then
+    user_home = "/home/" .. sudo_user
+end
 
 print("Beginning installation...")
+
+os.execute("sudo -v")
 
 for line in io.lines("packages") do
     if line:sub(1, 1) ~= "#" and line:match("%S") then
         print("Installing package: " .. line)
-        os.execute("pacman -S --noconfirm " .. line)
+        os.execute("sudo pacman -S --needed --noconfirm " .. line)
     end
 end
 
 print("Updating bash profile")
 
-local bash_profile_path = home .. "/.bash_profile"
+local bash_profile_path = user_home .. "/.bash_profile"
 local bash_profile = io.open(bash_profile_path, "a+")
 
 if bash_profile == nil then
@@ -26,5 +32,5 @@ bash_profile:close()
 
 print("Setting up dotfiles")
 
-os.execute("mkdir -p " .. home .. "/.config")
-os.execute("cp -r dotfiles/* " .. home .. "/.config/")
+os.execute("mkdir -p " .. user_home .. "/.config")
+os.execute("cp -r dotfiles/* " .. user_home .. "/.config/")
