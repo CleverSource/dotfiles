@@ -1,27 +1,56 @@
 local user_home = os.getenv("HOME")
 local sudo_user = os.getenv("SUDO_USER")
+
 if sudo_user and sudo_user ~= "root" then
     user_home = "/home/" .. sudo_user
 end
 
-print("Beginning installation...")
-
-os.execute("sudo -v")
-
-for line in io.lines("packages") do
-    if line:sub(1, 1) ~= "#" and line:match("%S") then
-        print("Installing package: " .. line)
-        os.execute("sudo pacman -S --needed --noconfirm " .. line)
-    end
+local function run(cmd)
+    local ok, _, code = os.execute(cmd)
+    return code == 0
 end
 
-print("Updating bash profile")
+local function has_cmd(cmd)
+    return run("command -v " .. cmd .. " >/dev/null 2>&1")
+end
+
+local pacman_cmd
+if has_cmd("sudo") then
+    pacman_cmd = "sudo pacman -S --needed --noconfirm"
+else
+    error("Error: You must either run this as root or have sudo installed")
+end
+
+if has_cmd("sudo") then
+    print("Requesting sudo access")
+    run("sudo -v")
+end
+
+-- Install packages
+print("==> Installing packages")
+
+local pkg_file = io.open("packages", "r")
+if not pkg_file then
+    error("Error: Could not open 'packages' file.")
+end
+
+for line in pkg_file:lines() do
+    line = line:match("^%s*(.-)%s*$")
+    if line ~= "" and not line:match("^#") then
+        print("→ Installing: " .. line)
+        if not run(pacman_cmd .. " " .. line) then
+            print("⚠️  Failed to install: " .. line)
+        end
+    end
+end
+pkg_file:close()
+
+print("==> Updating bash profile")
 
 local bash_profile_path = user_home .. "/.bash_profile"
 local bash_profile = io.open(bash_profile_path, "a+")
-
-if bash_profile == nil then
-    error("Error: Could not open .bash_profile for writing.")
+if not bash_profile then
+    error("Error: Could not open " .. bash_profile_path .. " for writing.")
 end
 
 bash_profile:write("\n# Added by Lua installer script\n")
@@ -30,7 +59,13 @@ bash_profile:write("    exec uwsm start hyprland.desktop\n")
 bash_profile:write("fi\n")
 bash_profile:close()
 
-print("Setting up dotfiles")
+print("==> Setting up dotfiles")
 
-os.execute("mkdir -p " .. user_home .. "/.config")
-os.execute("cp -r dotfiles/* " .. user_home .. "/.config/")
+local config_dir = user_home .. "/.config"
+run("mkdir -p " .. config_dir)
+run("cp -r dotfiles/* " .. config_dir .. "/")
+
+if sudo_user and sudo_user ~= "root" then
+    print("==> Fixing file ownership...")
+    run(string.format("sudo chown -R %s:%s %s", sudo_user, sudo_user, user_home))
+end
