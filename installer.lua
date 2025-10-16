@@ -65,6 +65,20 @@ local config_dir = user_home .. "/.config"
 run("mkdir -p " .. config_dir)
 run("cp -r dotfiles/* " .. config_dir .. "/")
 
+local once_dir = "dotfiles-once"
+if run("[ -d " .. once_dir .. " ]") then
+    print("==> Copying dotfiles-once (skipping existing files)")
+    -- Copy only files that do not already exist in ~/.config
+    run(string.format(
+        "find %s -type f | while read file; do " ..
+        "rel=${file#%s/}; dest=%s/$rel; " ..
+        "if [ ! -f \"$dest\" ]; then " ..
+        "mkdir -p \"$(dirname \"$dest\")\" && cp \"$file\" \"$dest\" && echo \"→ Copied $rel\"; " ..
+        "else echo \"⚙️  Skipped existing $rel\"; fi; done",
+        once_dir, once_dir, config_dir
+    ))
+end
+
 if sudo_user and sudo_user ~= "root" then
     print("==> Fixing file ownership...")
     run(string.format("sudo chown -R %s:%s %s", sudo_user, sudo_user, user_home))
