@@ -25,6 +25,7 @@ noto-fonts
 
 # Utilities
 fastfetch
+neovim
 
 # Applications
 alacritty
