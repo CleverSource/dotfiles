@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+sudo -v || { echo "This script requires sudo privileges. Please run as root or with sudo."; exit 1; }
+
 DRY_RUN=false
 [[ "${1:-}" == "--dry-run" || "${1:-}" == "-n" ]] && DRY_RUN=true
 
@@ -12,7 +14,6 @@ fi
 
 log "Running as: $(whoami)"
 log "User home: $USER_HOME"
-confirm_sudo
 
 run_cmd "sudo pacman -Syu --noconfirm"
 
@@ -29,7 +30,7 @@ source modules/dotfiles.sh
 setup_dotfiles "$USER_HOME"
 
 source modules/bash_profile.sh
-update_bash_profile "$USER_HOME"
+update_bash_profile "$USER_HOME"g
 
 run_cmd "gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"

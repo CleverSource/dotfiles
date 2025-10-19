@@ -15,14 +15,6 @@ run_cmd() {
     fi
 }
 
-confirm_sudo() {
-    if ! command -v sudo &>/dev/null; then
-        error "sudo is required. Run as root or install sudo first."
-    fi
-    log "Requesting sudo access..."
-    run_cmd "sudo -v"
-}
-
 safe_copy() {
     local src="$1" dest="$2"
     if $DRY_RUN; then
