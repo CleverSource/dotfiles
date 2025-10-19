@@ -26,6 +26,12 @@ noto-fonts-emoji
 noto-fonts-extra
 woff2-font-awesome
 
+# Gnome
+polkit-gnome
+gnome-themes-extra
+gnome-keyring
+gnome-calculator
+
 # Utilities
 fastfetch
 neovim
@@ -34,7 +40,11 @@ neovim
 alacritty
 nautilus
 chromium
+obs-studio
+discord
 
-# Gnome
-polkit-gnome
-gnome-themes-extra
+# Development
+git
+lua
+npm
+nodejs
