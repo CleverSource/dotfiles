@@ -20,17 +20,17 @@ run_cmd "sudo pacman -Syu --noconfirm"
 source modules/system.sh
 install_core_packages
 
-source modules/nvidia.sh
-setup_nvidia
-
 source modules/aur.sh
 install_aur_packages
 
 source modules/dotfiles.sh
 setup_dotfiles "$USER_HOME"
 
+source modules/nvidia.sh
+setup_nvidia
+
 source modules/bash_profile.sh
-update_bash_profile "$USER_HOME"g
+update_bash_profile "$USER_HOME"
 
 run_cmd "gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
