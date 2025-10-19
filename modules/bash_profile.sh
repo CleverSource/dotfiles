@@ -5,7 +5,7 @@ update_bash_profile() {
 
     log "Updating bash profile at $bash_profile"
 
-    local autostart_block="# Added Arch installer
+    local autostart_block="# Added by installer
 if uwsm check may-start; then
     exec uwsm start hyprland.desktop
 fi"

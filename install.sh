@@ -18,19 +18,18 @@ log "User home: $USER_HOME"
 # run_cmd "sudo pacman -Syu --noconfirm"
 
 source modules/system.sh
-install_core_packages
-
 source modules/aur.sh
-install_aur_packages
-
 source modules/dotfiles.sh
-setup_dotfiles "$USER_HOME"
-
 source modules/nvidia.sh
-setup_nvidia
-
 source modules/bash_profile.sh
+
+install_core_packages
+install_aur_packages
+setup_dotfiles "$USER_HOME"
+setup_nvidia
 update_bash_profile "$USER_HOME"
+update_keyring "$USER_HOME"
+setup_sddm
 
 run_cmd "gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"

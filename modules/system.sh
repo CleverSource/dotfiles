@@ -14,3 +14,76 @@ install_core_packages() {
         warn "No system packages found in packages file."
     fi
 }
+
+update_keyring() {
+    local user_home="$1"
+    local keyring_dir="$user_home/.local/share/keyrings"
+    local keyring_file="$keyring_dir/Default_keyring.keyring"
+    local default_file="$keyring_dir/default"
+
+    log "Ensuring default keyring configuration exists"
+
+    if [[ -f "$keyring_file" && -f "$default_file" ]]; then
+        warn "Keyring files already exist, skipping creation."
+        return
+    fi
+
+    run_cmd "mkdir -p \"$keyring_dir\""
+
+    if $DRY_RUN; then
+        echo "[dry-run] Create keyring at $keyring_file"
+        echo "[dry-run] Create default file at $default_file"
+        return
+    fi
+
+    cat <<EOF | tee "$keyring_file" >/dev/null
+[keyring]
+display-name=Default keyring
+ctime=$(date +%s)
+mtime=0
+lock-on-idle=false
+lock-after=false
+EOF
+
+    echo "Default_keyring" | tee "$default_file" >/dev/null
+
+    run_cmd "chmod 700 \"$keyring_dir\""
+    run_cmd "chmod 600 \"$keyring_file\""
+    run_cmd "chmod 644 \"$default_file\""
+
+    success "Default keyring initialized at $keyring_dir"
+}
+
+
+setup_sddm() {
+    log "Configuring SDDM autologin"
+
+    local conf_dir="/etc/sddm.conf.d"
+    local conf_file="$conf_dir/autologin.conf"
+
+    if ! sudo mkdir -p "$conf_dir"; then
+        error "Failed to create $conf_dir"
+        return 1
+    fi
+
+    if [[ -f "$conf_file" ]]; then
+        warn "SDDM autologin.conf already exists, skipping creation."
+    else
+        sudo tee "$conf_file" >/dev/null <<EOF
+[Autologin]
+User=$USER
+Session=hyprland-uwsm
+
+[Theme]
+Current=breeze
+EOF
+        success "Created SDDM autologin.conf for user $USER"
+    fi
+
+    if ! sudo systemctl enable sddm.service; then
+        error "Failed to enable SDDM service."
+        return 1
+    fi
+
+    success "SDDM service enabled successfully."
+}
