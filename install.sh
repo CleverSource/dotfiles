@@ -15,7 +15,7 @@ fi
 log "Running as: $(whoami)"
 log "User home: $USER_HOME"
 
-run_cmd "sudo pacman -Syu --noconfirm"
+run_cmd "sudo pacman -S --noconfirm"
 
 source modules/system.sh
 install_core_packages

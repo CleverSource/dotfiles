@@ -3,7 +3,6 @@ hyprland
 uwsm
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
-hyprpolkitagent
 mako
 
 # Bluetooth
@@ -36,5 +35,6 @@ alacritty
 nautilus
 chromium
 
-# Gnome theme
+# Gnome
+polkit-gnome
 gnome-themes-extra
