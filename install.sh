@@ -28,6 +28,9 @@ install_aur_packages
 source modules/dotfiles.sh
 setup_dotfiles "$USER_HOME"
 
+source modules/bash_profile.sh
+update_bash_profile "$USER_HOME"
+
 run_cmd "gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'"
