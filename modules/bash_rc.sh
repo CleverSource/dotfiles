@@ -13,7 +13,14 @@ if command -v fzf &> /dev/null; then
   if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
     source /usr/share/fzf/key-bindings.bash
   fi
-fi"
+fi
+
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+"
 
     # Ensure the file exists
     run_cmd "touch \"$bashrc\""
