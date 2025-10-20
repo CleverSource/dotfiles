@@ -20,7 +20,7 @@ enable_multilib() {
 
     local pacman_conf="/etc/pacman.conf"
 
-    if file_contains "$pacman_conf" "\[multilib\]"; then
+    if grep -Eq '^\[multilib\]' "$pacman_conf"; then
         warn "Multilib repository already enabled, skipping."
         return
     fi
@@ -28,7 +28,12 @@ enable_multilib() {
     if $DRY_RUN; then
         echo "[dry-run] Enable multilib in $pacman_conf"
     else
-        sudo sed -i '/#\[multilib\]/a\[multilib\]\nInclude = /etc/pacman.d/mirrorlist' "$pacman_conf"
+        if grep -Eq '^#\[multilib\]' "$pacman_conf"; then
+            sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "$pacman_conf"
+        else
+            echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a "$pacman_conf" >/dev/null
+        fi
+
         run_cmd "sudo pacman -Syy"
         success "Multilib repository enabled."
     fi
