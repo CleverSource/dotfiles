@@ -22,6 +22,9 @@ ttf-ia-writer
 ttf-cascadia-mono-nerd
 ttf-jetbrains-mono-nerd
 
+# Nautilus Extensions
+nautilus-open-any-terminal
+
 # Applications
 visual-studio-code-bin
 spotify

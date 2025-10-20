@@ -32,6 +32,8 @@ update_bash_rc "$USER_HOME"
 update_keyring "$USER_HOME"
 setup_sddm
 
+log "Setting default applications and themes"
+
 run_cmd "gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 run_cmd "gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'"
@@ -55,5 +57,10 @@ if [[ -f "$WALLPAPER_SRC" ]]; then
 else
     warn "No wallpaper.jpg found in $(pwd) — skipping wallpaper setup."
 fi
+
+log "Setting up Nautilus extensions..."
+run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal alacritty"
+run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings '<Ctrl><Alt>t'"
+run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true"
 
 success "System configured"
