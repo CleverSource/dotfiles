@@ -84,6 +84,16 @@ setup_sddm() {
 
     local conf_dir="/etc/sddm.conf.d"
     local conf_file="$conf_dir/autologin.conf"
+    local theme_src="$PWD/sddm"
+    local theme_dest="/usr/share/sddm/themes/clever"
+
+    if [[ -d "$theme_src" ]]; then
+        run_cmd "sudo mkdir -p /usr/share/sddm/themes"
+        run_cmd "sudo cp -r \"$theme_src\" \"$theme_dest\""
+        success "Copied SDDM theme to $theme_dest"
+    else
+        warn "Theme source directory not found: $theme_src"
+    fi
 
     if ! sudo mkdir -p "$conf_dir"; then
         error "Failed to create $conf_dir"
@@ -94,12 +104,8 @@ setup_sddm() {
         warn "SDDM autologin.conf already exists, skipping creation."
     else
         sudo tee "$conf_file" >/dev/null <<EOF
-[Autologin]
-User=$USER
-Session=hyprland-uwsm
-
 [Theme]
-Current=breeze
+Current=clever
 EOF
         success "Created SDDM autologin.conf for user $USER"
     fi
