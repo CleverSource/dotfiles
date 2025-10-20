@@ -19,6 +19,9 @@ pipewire-jack
 pipewire-pulse
 pavucontrol
 
+# Screensharing
+wireplumber
+
 # Qt Wayland Support
 qt5-wayland
 qt6-wayland

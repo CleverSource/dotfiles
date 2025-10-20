@@ -14,6 +14,9 @@ elephant-todo
 elephant-unicode
 elephant-websearch
 
+# Screensharing
+xwaylandvideobridge-git
+
 # Fonts
 ttf-ia-writer
 ttf-cascadia-mono-nerd
