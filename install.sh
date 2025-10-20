@@ -45,4 +45,15 @@ run_cmd "sudo systemctl enable --now iwd.service"
 run_cmd "sudo systemctl disable systemd-networkd-wait-online.service"
 run_cmd "sudo systemctl mask systemd-networkd-wait-online.service"
 
+WALLPAPER_SRC="$(pwd)/wallpaper.jpg"
+WALLPAPER_DEST="$USER_HOME/.config/wallpaper.jpg"
+log "Installing wallpaper..."
+
+if [[ -f "$WALLPAPER_SRC" ]]; then
+    safe_copy "$WALLPAPER_SRC" "$WALLPAPER_DEST"
+    log "Wallpaper installed at $WALLPAPER_DEST"
+else
+    warn "No wallpaper.jpg found in $(pwd) — skipping wallpaper setup."
+fi
+
 success "System configured"
