@@ -43,11 +43,11 @@ TERM = "xterm-256color"
 normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
 bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
 italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
-size = 12
+size = 9
 
 [window]
-padding.x = 12
-padding.y = 12
+padding.x = 14
+padding.y = 14
 decorations = "None"
 
 [keyboard]
