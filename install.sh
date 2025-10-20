@@ -23,6 +23,7 @@ source modules/dotfiles.sh
 source modules/nvidia.sh
 source modules/bash_profile.sh
 
+enable_multilib
 install_core_packages
 install_aur_packages
 setup_dotfiles "$USER_HOME"

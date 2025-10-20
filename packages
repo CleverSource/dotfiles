@@ -36,6 +36,7 @@ gnome-calculator
 # Utilities
 fastfetch
 neovim
+nano
 
 # Applications
 alacritty
@@ -43,6 +44,7 @@ nautilus
 chromium
 obs-studio
 discord
+steam
 
 # Development
 git

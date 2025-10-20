@@ -15,6 +15,25 @@ install_core_packages() {
     fi
 }
 
+enable_multilib() {
+    log "Enabling multilib repository"
+
+    local pacman_conf="/etc/pacman.conf"
+
+    if file_contains "$pacman_conf" "\[multilib\]"; then
+        warn "Multilib repository already enabled, skipping."
+        return
+    fi
+
+    if $DRY_RUN; then
+        echo "[dry-run] Enable multilib in $pacman_conf"
+    else
+        sudo sed -i '/#\[multilib\]/a\[multilib\]\nInclude = /etc/pacman.d/mirrorlist' "$pacman_conf"
+        run_cmd "sudo pacman -Syy"
+        success "Multilib repository enabled."
+    fi
+}
+
 update_keyring() {
     local user_home="$1"
     local keyring_dir="$user_home/.local/share/keyrings"

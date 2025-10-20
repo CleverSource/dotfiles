@@ -9,16 +9,12 @@ install_aur_packages() {
         popd >/dev/null
     fi
 
-    log "Installing AUR packages"
-    local pkgs=()
+    log "Installing AUR packages individually"
+
     while read -r line; do
         [[ -z "$line" || "$line" =~ ^# ]] && continue
-        pkgs+=("$line")
+        local pkg="$line"
+        log "Installing AUR package: $pkg"
+        run_cmd "yay -S --needed --noconfirm $pkg"
     done < packages-yay
-
-    if ((${#pkgs[@]})); then
-        run_cmd "yay -S --needed --noconfirm ${pkgs[*]}"
-    else
-        warn "No AUR packages found in packages-yay file."
-    fi
 }
