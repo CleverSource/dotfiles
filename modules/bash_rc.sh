@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 update_bash_rc() {
     local user_home="$1"
-    local bash_rc="$user_home/.bash_rc"
+    local bashrc="$user_home/.bashrc"
 
-    log "Updating bash rc at $bash_rc"
+    log "Updating bash rc at $bashrc"
 
     local autostart_block="# Added by installer
 if command -v fzf &> /dev/null; then
@@ -16,18 +16,18 @@ if command -v fzf &> /dev/null; then
 fi"
 
     # Ensure the file exists
-    run_cmd "touch \"$bash_rc\""
+    run_cmd "touch \"$bashrc\""
 
     # Skip if already present
-    if file_contains "$bash_rc" "# Added by installer"; then
+    if file_contains "$bashrc" "# Added by installer"; then
         warn "Autocomplete block already exists in bash rc, skipping."
         return
     fi
 
     if $DRY_RUN; then
-        echo "[dry-run] Append autocomplete block to $bash_rc"
+        echo "[dry-run] Append autocomplete block to $bashrc"
     else
-        echo -e "\n$autostart_block" >> "$bash_rc"
+        echo -e "\n$autostart_block" >> "$bashrc"
         success "Added autocomplete block to bash rc."
     fi
 }
