@@ -14,6 +14,11 @@ elephant-todo
 elephant-unicode
 elephant-websearch
 
+# Fonts
+ttf-ia-writer
+ttf-cascadia-mono-nerd
+ttf-jetbrains-mono-nerd
+
 # Applications
 visual-studio-code-bin
 spotify
