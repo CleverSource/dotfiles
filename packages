@@ -8,6 +8,7 @@ xdg-desktop-portal-hyprland
 mako
 sddm
 swaybg
+waybar
 
 # Bluetooth
 blueberry
@@ -25,6 +26,7 @@ wireplumber
 # Qt Wayland Support
 qt5-wayland
 qt6-wayland
+kvantum-qt5
 
 # Fonts
 fontconfig
