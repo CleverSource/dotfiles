@@ -84,7 +84,7 @@ setup_sddm() {
 
     local conf_dir="/etc/sddm.conf.d"
     local conf_file="$conf_dir/autologin.conf"
-    local theme_src="$PWD/sddm"
+    local theme_src="$PWD/sddm-theme"
     local theme_dest="/usr/share/sddm/themes/clever"
 
     if [[ -d "$theme_src" ]]; then
