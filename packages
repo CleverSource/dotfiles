@@ -37,6 +37,8 @@ gnome-calculator
 fastfetch
 neovim
 nano
+btop
+fzf
 
 # Applications
 alacritty

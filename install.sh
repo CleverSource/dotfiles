@@ -21,14 +21,14 @@ source modules/system.sh
 source modules/aur.sh
 source modules/dotfiles.sh
 source modules/nvidia.sh
-source modules/bash_profile.sh
+source modules/bash_rc.sh
 
 enable_multilib
 install_core_packages
 install_aur_packages
 setup_dotfiles "$USER_HOME"
 setup_nvidia
-update_bash_profile "$USER_HOME"
+update_bash_rc "$USER_HOME"
 update_keyring "$USER_HOME"
 setup_sddm
 
