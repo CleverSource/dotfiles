@@ -106,7 +106,9 @@ EOF
         success "Created SDDM autologin.conf for user $USER"
     fi
 
-    if [[ ! $DRY_RUN ]]; then
+    if $DRY_RUN; then
+        warn "[dry-run] SDDM theme directory $theme_dir copied."
+    else
         if sudo cp -r "$custom_theme_source" "$theme_dir"; then
             sudo cp "$(pwd)/wallpaper.jpg" "$theme_dir/background.jpg"
             sudo cp "$(pwd)/faces/ryan.face.icon" "/usr/share/sddm/faces/ryan.face.icon"
@@ -114,8 +116,6 @@ EOF
         else
             error "Failed to copy theme to $theme_dir"
         fi
-    else
-        warn "[dry-run] SDDM theme directory $theme_dir copied."
     fi
 
     if ! sudo systemctl enable sddm.service; then
