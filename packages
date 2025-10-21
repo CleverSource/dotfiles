@@ -54,6 +54,8 @@ btop
 fzf
 wget
 eza
+bat
+fish
 
 # Applications
 alacritty
