@@ -64,6 +64,6 @@ log "Setting up Fish shell as default..."
 run_cmd "fish setup.fish"
 
 log "Setting bash rc"
-safe_copy "$(pwd)/dotfiles/bashrc" "$USER_HOME/.bashrc"
+safe_copy "$(pwd)/dotfiles/.bashrc" "$USER_HOME/.bashrc"
 
 success "System configured"
