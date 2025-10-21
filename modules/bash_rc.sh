@@ -7,7 +7,7 @@ update_bash_rc() {
 
     local autostart_block="# Added by installer
 if command -v starship &> /dev/null; then
-  eval "$(starship init bash)"
+  eval \"\$(starship init bash)\"
 fi
 
 if command -v fzf &> /dev/null; then
@@ -23,7 +23,7 @@ alias ls='eza -lh --group-directories-first --icons=auto'
 alias lsa='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
-alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+alias ff=\"fzf --preview 'bat --style=numbers --color=always {}'\"
 "
 
     # Ensure the file exists
