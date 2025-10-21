@@ -84,6 +84,8 @@ setup_sddm() {
 
     local conf_dir="/etc/sddm.conf.d"
     local conf_file="$conf_dir/autologin.conf"
+    local theme_dir="/usr/share/sddm/themes/clever"
+    local custom_theme_source="$PWD/sddm-theme"
 
     if ! sudo mkdir -p "$conf_dir"; then
         error "Failed to create $conf_dir"
@@ -102,6 +104,16 @@ GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/clever/components/,QT
 Current=clever
 EOF
         success "Created SDDM autologin.conf for user $USER"
+    fi
+
+    if [[ ! -d "$theme_dir" ]]; then
+        if sudo cp -r "$custom_theme_source" "$theme_dir"; then
+            success "Copied custom SDDM theme to $theme_dir"
+        else
+            error "Failed to copy theme to $theme_dir"
+        fi
+    else
+        warn "SDDM theme directory $theme_dir already exists, skipping copy."
     fi
 
     if ! sudo systemctl enable sddm.service; then
