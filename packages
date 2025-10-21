@@ -44,6 +44,7 @@ gnome-calculator
 
 # WiFi
 iwd
+iwgtk
 
 # Utilities
 fastfetch
@@ -53,6 +54,7 @@ btop
 fzf
 wget
 eza
+starship
 
 # Applications
 alacritty

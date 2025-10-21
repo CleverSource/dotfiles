@@ -6,6 +6,10 @@ update_bash_rc() {
     log "Updating bash rc at $bashrc"
 
     local autostart_block="# Added by installer
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
+
 if command -v fzf &> /dev/null; then
   if [[ -f /usr/share/fzf/completion.bash ]]; then
     source /usr/share/fzf/completion.bash
