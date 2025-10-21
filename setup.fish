@@ -9,5 +9,3 @@ if not functions -q fisher
 end
 
 fisher install PatrickF1/fzf.fish
-
-fzf_configure_bindings --directory=\cf

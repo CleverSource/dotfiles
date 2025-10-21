@@ -1,4 +1,5 @@
 set fish_greeting ""
+fzf_configure_bindings --directory=\cf
 
 if type -q starship
     starship init fish | source
