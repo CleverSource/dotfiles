@@ -109,6 +109,7 @@ EOF
     if [[ ! -d "$theme_dir" ]]; then
         if sudo cp -r "$custom_theme_source" "$theme_dir"; then
             sudo cp "$(pwd)/wallpaper.jpg" "$theme_dir/background.jpg"
+            sudo cp "$custom_theme_source/faces" "/usr/share/sddm/faces"
             success "Copied custom SDDM theme to $theme_dir"
         else
             error "Failed to copy theme to $theme_dir"
