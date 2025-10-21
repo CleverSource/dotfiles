@@ -23,8 +23,8 @@ source modules/dotfiles.sh
 source modules/nvidia.sh
 
 enable_multilib
+install_yay
 install_core_packages
-install_aur_packages
 setup_dotfiles "$USER_HOME"
 setup_nvidia
 update_keyring "$USER_HOME"

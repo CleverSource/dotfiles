@@ -9,7 +9,7 @@ install_core_packages() {
     done < packages
 
     if ((${#pkgs[@]})); then
-        run_cmd "sudo pacman -S --needed --noconfirm ${pkgs[*]}"
+        run_cmd "yay -S --needed --noconfirm ${pkgs[*]}"
     else
         warn "No system packages found in packages file."
     fi
