@@ -61,7 +61,7 @@ run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal termin
 run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab false"
 
 log "Setting up Fish shell as default..."
-run_cmd "fish setup.fish"
+run_cmd "sudo fish setup.fish"
 
 log "Setting bash rc"
 safe_copy "$(pwd)/dotfiles/.bashrc" "$USER_HOME/.bashrc"

@@ -94,8 +94,12 @@ setup_sddm() {
         warn "SDDM autologin.conf already exists, skipping creation."
     else
         sudo tee "$conf_file" >/dev/null <<EOF
+[General]
+InputMethod=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/clever/components/,QT_IM_MODULE=qtvirtualkeyboard
+
 [Theme]
-Current=breeze
+Current=clever
 EOF
         success "Created SDDM autologin.conf for user $USER"
     fi

@@ -44,7 +44,7 @@
     "on-click": "$TERMINAL -e btop"
   },
   "clock": {
-    "format": "{:L%A %I:%M}",
+    "format": "{:L%A %I:%M %p}",
     "format-alt": "{:%m/%d/%Y}",
     "tooltip": false
   },

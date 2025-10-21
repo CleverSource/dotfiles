@@ -1,0 +1,14 @@
+[SddmGreeterTheme]
+Name=Clever
+Type=sddm-theme
+Description=Custom theme for my dotfiles
+License=GPL-3.0-or-later
+Version=1.0.0
+Theme-Id=clever
+Theme-API=2.0
+MainScript=Main.qml
+Screenshot=
+TranslationsDirectory=translations
+QtVersion=6
+
+ConfigFile=theme.conf

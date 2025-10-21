@@ -6,9 +6,14 @@ uwsm
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 mako
-sddm
 swaybg
 waybar
+
+# sddm
+sddm
+qt6-svg
+qt6-virtualkeyboard
+qt6-multimedia-ffmpeg
 
 # Bluetooth
 blueberry
