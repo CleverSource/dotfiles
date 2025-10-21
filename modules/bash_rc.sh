@@ -24,6 +24,11 @@ alias lsa='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
 alias ff=\"fzf --preview 'bat --style=numbers --color=always {}'\"
+
+if [[ $(ps --no-header --pid=$PPID --format=comm) != \"fish\" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
+  shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+  exec fish $LOGIN_OPTION
+fi
 "
 
     # Ensure the file exists

@@ -62,4 +62,7 @@ log "Setting up Nautilus extensions..."
 run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal alacritty"
 run_cmd "gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab false"
 
+log "Setting up Fish shell as default..."
+run_cmd "fish setup.fish"
+
 success "System configured"
