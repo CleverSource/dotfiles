@@ -144,9 +144,9 @@ Item {
             }
             onStatusChanged: {
                 if (status === Image.Error) {
-                    if (source !== "~/.config/wallpaper.jpg" && source !== "") {
-                        source = "~/.config/wallpaper.jpg";
-                    } else if (source === "~/.config/wallpaper.jpg") {
+                    if (source !== "background.jpg" && source !== "") {
+                        source = "background.jpg";
+                    } else if (source === "background.jpg") {
                         // If even default fails, show color background
                         displayColor = true;
                     }
