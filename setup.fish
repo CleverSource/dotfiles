@@ -11,7 +11,7 @@ chsh -s (which fish) $REAL_USER
 # Install fisher and fzf plugin
 if not functions -q fisher
     echo "Installing fisher..."
-    pacman -S --noconfirm fish
+    pacman -S --noconfirm fisher
 end
 
 fisher install PatrickF1/fzf.fish
