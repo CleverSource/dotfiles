@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-install_yay() {
-    log "Installing yay if needed"
+install_aur_packages() {
+    log "Installing AUR helper (yay) if needed"
 
     if ! command -v yay &>/dev/null; then
         run_cmd "git clone https://aur.archlinux.org/yay.git /tmp/yay"
@@ -8,4 +8,13 @@ install_yay() {
         run_cmd "makepkg -si --noconfirm"
         popd >/dev/null
     fi
+
+    log "Installing AUR packages individually"
+
+    while read -r line; do
+        [[ -z "$line" || "$line" =~ ^# ]] && continue
+        local pkg="$line"
+        log "Installing AUR package: $pkg"
+        run_cmd "yay -S --needed --noconfirm $pkg"
+    done < packages-yay
 }

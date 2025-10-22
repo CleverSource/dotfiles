@@ -9,7 +9,7 @@ install_core_packages() {
     done < packages
 
     if ((${#pkgs[@]})); then
-        run_cmd "yay -S --needed --noconfirm ${pkgs[*]}"
+        run_cmd "sudo pacman -S --needed --noconfirm ${pkgs[*]}"
     else
         warn "No system packages found in packages file."
     fi
@@ -109,6 +109,7 @@ EOF
     if $DRY_RUN; then
         warn "[dry-run] SDDM theme directory $theme_dir copied."
     else
+    
         sudo mkdir -p /usr/share/sddm/themes
         sudo mkdir -p /usr/share/sddm/faces
 

@@ -1,4 +1,3 @@
-## Pacman Packages
 # Fonts
 fontconfig
 noto-fonts
@@ -79,43 +78,3 @@ git
 lua
 npm
 nodejs
-
-## Yay Packages
-# Walker
-walker-bin
-elephant
-elephant-bluetooth
-elephant-calc
-elephant-clipboard
-elephant-desktopapplications
-elephant-files
-elephant-menus
-elephant-providerlist
-elephant-runner
-elephant-symbols
-elephant-todo
-elephant-unicode
-elephant-websearch
-
-# WiFi
-iwgtk
-
-# Utilities
-starship
-
-# Screensharing
-xwaylandvideobridge-git
-
-# Fonts
-ttf-ia-writer
-ttf-cascadia-mono-nerd
-ttf-jetbrains-mono-nerd
-
-# Nautilus Extensions
-nautilus-open-any-terminal
-
-# Applications
-visual-studio-code-bin
-spotify
-1password
-1password-cli
