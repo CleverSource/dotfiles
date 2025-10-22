@@ -109,9 +109,7 @@ EOF
     if $DRY_RUN; then
         warn "[dry-run] SDDM theme directory $theme_dir copied."
     else
-
-        if sudo rm -r "$theme_dir"; then
-            sudo cp -r "$custom_theme_source" "$theme_dir"
+        if sudo cp -rT "$custom_theme_source" "$theme_dir"; then
             sudo cp "$(pwd)/wallpaper.jpg" "$theme_dir/background.jpg"
             sudo cp "$(pwd)/faces/ryan.face.icon" "/usr/share/sddm/faces/ryan.face.icon"
             success "Copied custom SDDM theme to $theme_dir"
