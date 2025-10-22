@@ -1,4 +1,12 @@
 ## Pacman Packages
+# Fonts
+fontconfig
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+woff2-font-awesome
+
 # Hyprland
 hyprland
 hyprlock
@@ -33,14 +41,6 @@ wireplumber
 qt5-wayland
 qt6-wayland
 kvantum-qt5
-
-# Fonts
-fontconfig
-noto-fonts
-noto-fonts-cjk
-noto-fonts-emoji
-noto-fonts-extra
-woff2-font-awesome
 
 # Gnome
 polkit-gnome
